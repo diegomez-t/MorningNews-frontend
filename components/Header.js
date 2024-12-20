@@ -10,7 +10,7 @@ import Moment from 'react-moment';
 import { Modal } from 'antd';
 import Link from 'next/link';
 
-const url = process.env.BACK_URL;
+const NEXT_PUBLIC_BACK_URL = process.env.NEXT_PUBLIC_BACK_URL;
 
 function Header() {
 	const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function Header() {
 	}, []);
 
 	const handleRegister = () => {
-		fetch(`${url}/users/signup`, {
+		fetch(`${NEXT_PUBLIC_BACK_URL}/users/signup`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: signUpUsername, password: signUpPassword }),
@@ -45,7 +45,7 @@ function Header() {
 
 	const handleConnection = () => {
 
-		fetch(`${url}/users/signin`, {
+		fetch(`${NEXT_PUBLIC_BACK_URL}/users/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: signInUsername, password: signInPassword }),

@@ -5,7 +5,7 @@ import Article from './Article';
 import TopArticle from './TopArticle';
 import styles from '../styles/Home.module.css';
 
-const url = process.env.BACK_URL;
+const NEXT_PUBLIC_BACK_URL = process.env.NEXT_PUBLIC_BACK_URL;
 
 function Home() {
   const bookmarks = useSelector((state) => state.bookmarks.value);
@@ -15,7 +15,7 @@ function Home() {
   const [topArticle, setTopArticle] = useState({});
 
   useEffect(() => {
-    fetch(`${url}/articles`)
+    fetch(`${NEXT_PUBLIC_BACK_URL}/articles`)
       .then(response => response.json())
       .then(data => {
         setTopArticle(data.articles[0]);
