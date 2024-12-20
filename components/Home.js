@@ -5,6 +5,8 @@ import Article from './Article';
 import TopArticle from './TopArticle';
 import styles from '../styles/Home.module.css';
 
+const url = process.env.BACK_URL;
+
 function Home() {
   const bookmarks = useSelector((state) => state.bookmarks.value);
   const hiddenArticles = useSelector((state) => state.hiddenArticles.value)
@@ -13,7 +15,7 @@ function Home() {
   const [topArticle, setTopArticle] = useState({});
 
   useEffect(() => {
-    fetch('http://localhost:3000/articles')
+    fetch(`${url}/articles`)
       .then(response => response.json())
       .then(data => {
         setTopArticle(data.articles[0]);

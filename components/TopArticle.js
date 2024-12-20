@@ -4,6 +4,8 @@ import styles from '../styles/TopArticle.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
+const url = process.env.BACK_URL;
+
 
 function TopArticle(props) {
 
@@ -15,7 +17,7 @@ function TopArticle(props) {
 			return;
 		}
 
-		fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
+		fetch(`${url}/users/canBookmark/${user.token}`)
 			.then(response => response.json())
 			.then(data => {
 				if (data.result && data.canBookmark) {

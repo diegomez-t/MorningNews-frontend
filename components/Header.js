@@ -10,6 +10,8 @@ import Moment from 'react-moment';
 import { Modal } from 'antd';
 import Link from 'next/link';
 
+const url = process.env.BACK_URL;
+
 function Header() {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user.value);
@@ -26,7 +28,7 @@ function Header() {
 	}, []);
 
 	const handleRegister = () => {
-		fetch('http://localhost:3000/users/signup', {
+		fetch(`${url}/users/signup`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: signUpUsername, password: signUpPassword }),
@@ -43,7 +45,7 @@ function Header() {
 
 	const handleConnection = () => {
 
-		fetch('http://localhost:3000/users/signin', {
+		fetch(`${url}/users/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: signInUsername, password: signInPassword }),
